@@ -10,7 +10,7 @@ import javax.mail.internet.*;
 import javax.mail.internet.MimeMessage;
 public class EmailSend {
 
-    public void enviar(){
+    public void send(){
         try{
             String host ="smtp.gmail.com" ;
             String user = "checho.quiros99@gmail.com";

@@ -43,7 +43,7 @@ public class SecondWindow extends javax.swing.JFrame {
           if(w>1){
           for(int d=0;d<w;d++){
           
-          DefaultMutableTreeNode son=new DefaultMutableTreeNode(SystemManager.getInstance().getTree(i).Gettreenode(d).getFile().getName());
+           DefaultMutableTreeNode son=new DefaultMutableTreeNode(SystemManager.getInstance().getTree(i).Gettreenode(d).getFile().getName());
            selectednode.add(son);
           }
           }

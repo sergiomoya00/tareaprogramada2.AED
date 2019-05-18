@@ -202,17 +202,17 @@ public class FileCreation extends javax.swing.JFrame {
             this.file.setSize(size);
             String item = combopar.getSelectedItem().toString();
             if (item == SystemManager.getInstance().getTree(i).Gettreenode(0).getRoot()) {
-                Partitions lista[] = new Partitions[x];
-
-                lista[i] = new Partitions();
-                lista[i].setFile(file);
-                SystemManager.getInstance().getTree(i).insert(lista[i]);
-
+            BST<SYSTEM.Partitions> tree=SystemManager.getInstance().getTree(i);
+            SYSTEM.Partitions[] partition=new SYSTEM.Partitions[100];
+            partition[i]=new SYSTEM.Partitions();
+            partition[i].setRoot("r"+".NTFS");
+            partition[i].setSize(12);
+            partition[i].setFile(file);
+            tree.insert(partition[i]);
+            SystemManager.getInstance().addTree(tree);
             }
+            
         }
-
-      
-
         
         SecondWindow usuario = new SecondWindow();
         usuario.setVisible(true);

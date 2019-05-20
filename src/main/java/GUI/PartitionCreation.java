@@ -7,6 +7,7 @@ package GUI;
 
 import Collections.BST;
 import Collections.Validation;
+import SYSTEM.FileSystem;
 import SYSTEM.HDD;
 import SYSTEM.Partitions;
 import SYSTEM.SystemManager;
@@ -25,6 +26,10 @@ public class PartitionCreation extends javax.swing.JFrame {
    public HDD getHDD() {
         return hdd;
     }
+   public FileSystem getFile() {
+        return file;
+    }
+   private FileSystem file;
     /**
      * Creates new form PartitionCreation
      */
@@ -79,7 +84,7 @@ public class PartitionCreation extends javax.swing.JFrame {
     Validation sec=new Validation();
     boolean size=sec.Validate(txtsize.getText());
     if (size!=false){
-     
+     int w=SystemManager.getInstance().getTree().size();
      int e=Integer.parseInt(txtsize.getText());
      
      float x=SystemManager.getInstance().getHDD(0).getSize();
@@ -96,15 +101,17 @@ public class PartitionCreation extends javax.swing.JFrame {
      this.hdd.setFreespace(freespace);
      SystemManager.getInstance().addHDD(hdd);
      
-    
+        this.file=new FileSystem();
+        this.file.setName("null");
+        this.file.setSize(0);
         this.partition= new Partitions();
         this.partition.setRoot(txtroot.getText()+".NTFS");
         this.partition.setSize(e);
+        this.partition.setFile(file);
         SystemManager.getInstance().addPartition(partition);
-          BST<Partitions> part=new BST<>();
-          part.insert(partition);
-          SystemManager.getInstance().addTree(part);
-        
+        BST<Partitions> part=new BST<>();
+        part.insert(partition);
+        SystemManager.getInstance().addTree(part);
         SecondWindow usuario = new SecondWindow();
         usuario.setVisible(true);
         this.setVisible(false);}

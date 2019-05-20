@@ -133,12 +133,12 @@ public class Ventanainicial extends javax.swing.JFrame {
         this.partition.setSize(s);
         this.partition.setFile(file);
         SystemManager.getInstance().addPartition(partition);
-        BST<Partitions> part=new BST<>();
-        part.insert(partition);
-        SystemManager.getInstance().addTree(part);
-        
+        BST<Partitions> la=new BST<>();
+        la.insert(partition);
+        SystemManager.getInstance().addTree(la);
         w=w+1;
         }
+        
         
         SecondWindow usuario = new SecondWindow();
         usuario.setVisible(true);

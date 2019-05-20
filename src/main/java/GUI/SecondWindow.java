@@ -31,12 +31,15 @@ public class SecondWindow extends javax.swing.JFrame {
      */
     public SecondWindow() {
         initComponents();
+        int x=SystemManager.getInstance().getPartition().size();
         DefaultMutableTreeNode root=new DefaultMutableTreeNode("Particiones");
         
-        int x=SystemManager.getInstance().getPartition().size();
+        
+        
         for(int i=0;i<x;i++){
+            
           int w=SystemManager.getInstance().getTree(i).nodecounter();
-         
+          System.out.println(w);
           DefaultMutableTreeNode selectednode=new DefaultMutableTreeNode(SystemManager.getInstance().getPartition(i).getRoot());
           
        

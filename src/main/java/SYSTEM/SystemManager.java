@@ -21,6 +21,7 @@ public class SystemManager {
     BST<Partitions> part= new BST<>();
     List< BST<Partitions>> tree = new SimpleLinkeList<>();
     List<Partitions> partitions = new SimpleLinkeList<>();
+    List<BST<Partitions>> realtrees = new SimpleLinkeList<>();
     
     List<HDD> hdd = new SimpleLinkeList<>();
 
@@ -46,6 +47,9 @@ public class SystemManager {
       public void addTree( BST<Partitions> hdd) {
         this.tree.add(hdd);
     }
+       public void addTree( int index,BST<Partitions> hdd) {
+        this.tree.add(index,hdd);
+    }
     public List<BST<Partitions>> getTree() {
         return tree;
     }
@@ -53,13 +57,37 @@ public class SystemManager {
     public void removeTree(int index) {
         tree.remove(index);
     }
+      public void addRealTree( BST<Partitions> hdd) {
+        this.realtrees.add(hdd);
+    }
+       public void addRealTree( int index,BST<Partitions> hdd) {
+        this.realtrees.add(index,hdd);
+    }
+         public void SetTree( int index,BST<Partitions> hdd) {
+        this.realtrees.set(index,hdd);
+    }
+    public List<BST<Partitions>> getRealTree() {
+        return realtrees;
+    }
+
+    public void removeRealTree(int index) {
+        realtrees.remove(index);
+    }
 
     public void removeTreee(int index) {
         partitions.remove(index);
     }
+    public void removeTree( BST<Partitions> partition) {
+        this.tree.remove(partition);
+
+    }
 
     public BST<Partitions> getTree(int index) {
         BST<Partitions> selectedtree= tree.get(index);
+        return selectedtree;
+    }
+     public BST<Partitions> getRealTree(int index) {
+        BST<Partitions> selectedtree= realtrees.get(index);
         return selectedtree;
     }
     //Métodos para añadir y eliminar un elemento de tipo Order. 
@@ -106,6 +134,7 @@ public class SystemManager {
         Partitions partition = partitions.get(index);
         return partition;
     }
+    
     
     public Collection<Partitions> searchRaffle(Partitions newPartition) {
 

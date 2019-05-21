@@ -11,6 +11,7 @@ import Collections.SimpleLinkeList;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import static javax.management.Query.lt;
 
 /**
  *
@@ -18,13 +19,17 @@ import java.util.List;
  */
 public class SystemManager {
 
-    BST<Partitions> part= new BST<>();
-    List< BST<Partitions>> tree = new SimpleLinkeList<>();
-    List<Partitions> partitions = new SimpleLinkeList<>();
-    List<BST<Partitions>> realtrees = new SimpleLinkeList<>();
-    
-    List<HDD> hdd = new SimpleLinkeList<>();
+    //BST<Partitions> part[];
 
+    
+    List< BST<Partitions>> tree = new SimpleLinkeList<>();
+    BST<Word> bstree = new BST<>();
+    List<Partitions> partitions = new SimpleLinkeList<>();
+    List<String> txt = new SimpleLinkeList<>();
+    List<HDD> hdd = new SimpleLinkeList<>();
+    List<BST<Word>> la = new SimpleLinkeList<>();
+    
+    
     public static SystemManager instance;
 
     public static final SystemManager getInstance() {
@@ -43,9 +48,32 @@ public class SystemManager {
         instance.partitions.clear();
         //instance.partitions.clear();
     }
+    
+       public boolean nodesequals(String index){
+       for (int i=0;i<SystemManager.getInstance().getTreeString().nodecounter();i++) {
+            
+             
+        if (SystemManager.getInstance().getTreeString().Gettreenod(i).equals(index)) {
+                return true;
+                }
+        
+       }
+       return false;
+       }
+      
+      public Word getTreeString(int index){
+      Word e=bstree.Gettreenod(index);
+      return e;
+      }
+      public  BST<Word> getTreeString(){
+      return bstree;
+      }
 
       public void addTree( BST<Partitions> hdd) {
         this.tree.add(hdd);
+    }
+       public void addStringTree( Word hdd) {
+        this.bstree.insert(hdd);
     }
        public void addTree( int index,BST<Partitions> hdd) {
         this.tree.add(index,hdd);
@@ -57,21 +85,22 @@ public class SystemManager {
     public void removeTree(int index) {
         tree.remove(index);
     }
-      public void addRealTree( BST<Partitions> hdd) {
-        this.realtrees.add(hdd);
+     
+       public void addRealTree( int index,BST<Word> hdd) {
+        this.la.add(index,hdd);
     }
-       public void addRealTree( int index,BST<Partitions> hdd) {
-        this.realtrees.add(index,hdd);
+        public void addUnique( BST<Word> hdd) {
+        this.la.add(hdd);
     }
-         public void SetTree( int index,BST<Partitions> hdd) {
-        this.realtrees.set(index,hdd);
+       public void addUnique( int index,BST<Word> hdd) {
+        this.la.add(index,hdd);
     }
-    public List<BST<Partitions>> getRealTree() {
-        return realtrees;
+       public List<BST<Word>>  getUnique() {
+        return la;
     }
-
-    public void removeRealTree(int index) {
-        realtrees.remove(index);
+         public BST<Word> getUnique(int index) {
+        BST<Word> selectedtree= la.get(index);
+        return selectedtree;
     }
 
     public void removeTreee(int index) {
@@ -86,10 +115,7 @@ public class SystemManager {
         BST<Partitions> selectedtree= tree.get(index);
         return selectedtree;
     }
-     public BST<Partitions> getRealTree(int index) {
-        BST<Partitions> selectedtree= realtrees.get(index);
-        return selectedtree;
-    }
+    
     //Métodos para añadir y eliminar un elemento de tipo Order. 
    
 
@@ -116,6 +142,28 @@ public class SystemManager {
     public void removeHDD(int index) {
         hdd.remove(index);
     }
+      public void addWord(String hdd) {
+        this.txt.add(hdd);
+    }
+
+    public void removeWord(int index) {
+        txt.remove(index);
+    }
+    public List<String> getWord() {
+        return txt;
+    }
+
+    public String getWord(int index) {
+        String hdds = txt.get(index);
+        return hdds;
+    }
+    
+
+    public void removeTextEdition(int index) {
+        txt.remove(index);
+    }
+
+  
 
     public void removePartition(int index) {
         partitions.remove(index);
@@ -134,8 +182,7 @@ public class SystemManager {
         Partitions partition = partitions.get(index);
         return partition;
     }
-    
-    
+
     public Collection<Partitions> searchRaffle(Partitions newPartition) {
 
         List<Partitions> results = new ArrayList<>();

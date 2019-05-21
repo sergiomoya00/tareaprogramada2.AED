@@ -29,11 +29,11 @@ public class FileSystem {
     public void setName(String name) {
         this.name = name;
     }
-
-    public float getSize() {
+    
+    public float getSize(){
         return size;
     }
-
+    
     public void setSize(float size) {
         this.size = size;
     }

@@ -60,8 +60,8 @@ public class PartitionCreation extends javax.swing.JFrame {
                 txtrootActionPerformed(evt);
             }
         });
-        getContentPane().add(txtroot, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 70, -1));
-        getContentPane().add(txtsize, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 70, 20));
+        getContentPane().add(txtroot, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 70, 30));
+        getContentPane().add(txtsize, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 70, 30));
 
         jLabel1.setText("Raiz");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));

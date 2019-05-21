@@ -14,6 +14,7 @@ package Collections;
 
 
 import SYSTEM.Partitions;
+import SYSTEM.Word;
 import java.util.*;
 
 public class BST <T extends Comparable<T>> implements Iterable<T>
@@ -66,7 +67,22 @@ public Partitions Gettreenode(int index) {
                     
                 return partition;
 	}
-
+public Word Gettreenod(int index) {
+                Word partition = null;
+		StringBuffer sb = new StringBuffer();
+                int i=0;
+                for (T data : this){
+                    if(i<=index){
+                    sb.append(data.toString());
+                    partition=(Word) data;
+                    i++;
+                    }
+                   }
+                    
+                    
+                return partition;
+	}
+   
 /*****************************************************
 *
 *            INSERT

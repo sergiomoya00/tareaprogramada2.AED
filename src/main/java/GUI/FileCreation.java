@@ -7,6 +7,7 @@ package GUI;
 
 import Collections.BST;
 import SYSTEM.FileSystem;
+import SYSTEM.HDD;
 import SYSTEM.Partitions;
 import SYSTEM.SystemManager;
 import java.io.File;
@@ -19,8 +20,8 @@ import java.io.PrintWriter;
  */
 public class FileCreation extends javax.swing.JFrame {
 
-    FileSystem file;
-
+    private FileSystem file;
+    private HDD hdd;
     public FileSystem getFile() {
         return file;
     }
@@ -29,7 +30,9 @@ public class FileCreation extends javax.swing.JFrame {
     public Partitions getPartition() {
         return partition;
     }
-
+   public HDD getHDD() {
+        return hdd;
+    }
     /**
      * Creates new form FileCreation
      */
@@ -202,14 +205,24 @@ public class FileCreation extends javax.swing.JFrame {
             this.file.setName(name);
             this.file.setSize(size);
             String item = combopar.getSelectedItem().toString();
-        
+            
+            
             for (int i = 0; i < x;i++) {
             if (item == SystemManager.getInstance().getTree(i).Gettreenode(0).getRoot()) {
-            BST<SYSTEM.Partitions> tree=SystemManager.getInstance().getTree(i);
+             BST<SYSTEM.Partitions> tree=SystemManager.getInstance().getTree(i);
+             float j=SystemManager.getInstance().getPartition(i).getSize()+size;
+             SystemManager.getInstance().getPartition(i).setSize(j);
+             float h=SystemManager.getInstance().getHDD(0).getFreespace()-j;
+             float r=SystemManager.getInstance().getHDD(0).getSpaceused()+j;
+             SystemManager.getInstance().getHDD().clear();
+             this.hdd=new HDD();
+             this.hdd.setFreespace(h);
+             this.hdd.setSpaceused(r);
+            SystemManager.getInstance().addHDD(hdd);
             SYSTEM.Partitions[] partition=new SYSTEM.Partitions[100];
             partition[i]=new SYSTEM.Partitions();
             partition[i].setRoot(null);
-            partition[i].setSize(12);
+            partition[i].setSize(j);
             partition[i].setFile(file);
             tree.insert(partition[i]);
             SystemManager.getInstance().addTree(tree);

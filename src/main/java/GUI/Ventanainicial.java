@@ -65,15 +65,21 @@ public class Ventanainicial extends javax.swing.JFrame {
                 txtsizeActionPerformed(evt);
             }
         });
-        getContentPane().add(txtsize, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 60, -1));
+        getContentPane().add(txtsize, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 60, -1));
 
         txtnumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnumberActionPerformed(evt);
             }
         });
-        getContentPane().add(txtnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 60, -1));
-        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 60, -1));
+        getContentPane().add(txtnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 60, -1));
+
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtemailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 160, 30));
 
         jLabel1.setText("Tamaño del disco duro");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 160, -1));
@@ -154,6 +160,10 @@ public class Ventanainicial extends javax.swing.JFrame {
     private void txtnumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnumberActionPerformed
+
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
 
     /**
      * @param args the command line arguments
